@@ -16,8 +16,9 @@ const bootstrap = async () => {
         new FastifyAdapter(),
     )
     app.register(compression)
+    app.enableCors()
     // app.useGlobalInterceptors(new Performance(app.get(Reflector)))
     app.useGlobalFilters(new NotFoundExceptionFilter())
-    await app.listen(3000)
+    await app.listen(3000, "0.0.0.0")
 }
 bootstrap()
